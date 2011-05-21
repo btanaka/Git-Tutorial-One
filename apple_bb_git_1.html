@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>An Introduction to Git</title>
+  <link type="text/css" rel="stylesheet" href="preso/sh/styles/shCoreDefault.css"/>
+  <link type="text/css" rel="stylesheet" href="preso/css/dzslides.css"/>
+  <link type="text/css" rel="stylesheet" href="preso/css/custom.css"/>
+
+  <script type="text/javascript" src="preso/js/jquery.js"></script>
+  <script type="text/javascript" src="preso/sh/scripts/shCore.js"></script>
+  <script type="text/javascript" src="preso/sh/scripts/shAutoloader.js"></script>
+  <script type="text/javascript" src="preso/js/dzslides.js"></script>
+  <script type="text/javascript" src="preso/js/custom.js"></script>
+</head>
+<body>
+
+<section>
+  <h1>An Introduction to Git</h1>
+  <div style="width:820px;padding-top:1em" class="smaller">
+	<div style="width:300px;float:right">
+        <img style="display:block;margin:0.4em auto 0" src="images/gitlogo.png" alt="git">
+    </div>
+    <div style="width:500px;float:right">
+      <h3 style="margin-bottom:0">
+        btanaka@apple.com
+      </h3>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+</section>
+
+
+<section>
+  <h1>Here's What We'll Cover</h1>
+  <p>
+	<ul>
+	<li>What is git?</li>
+	<li>Fundamental Concepts</li>
+	<li>Benefits of Git</li>
+	<li>A simple example</li>
+	<li>Creating the repo</li>
+	<li>Committing</li>
+	<li>Typical daily workflow</li>
+	<li>Branching (see the changes instantly)</li>
+	<li>Merging</li>
+	<li>gitignore</li>
+	<li>Xcode 4</li>
+	<li>Getting more help</li>
+	</ul>
+<p>
+<!--  <aside>
+    <a href="http://api.jquery.com/jQuery/"><code>jQuery()</code> function</a>
+  </aside> -->
+</section>
+
+
+
+<section>
+  <h1>What is Git?</h1>
+	<p>Git is a free & open source, distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</p>
+
+</section>
+
+
+
+
+
+<section>
+  <h1>Fundamental Concepts</h1>
+<p>
+<ul>
+	<li>Git is distributed &mdash; No centralized server</li>
+	<li>Changes are committed locally</li>
+	<li>Collaborative code is shared via push & pull</li>
+	<li>Branching and merging is easy and useful</li>
+</ul>
+</p>
+</section>
+
+
+
+<section>
+  <h1>Benefits of Git</h1>
+<p>
+<ul>
+	<li>Work offline and yet still commit freely</li>
+	<li>Cheap branching and merging</li>
+</ul>
+</p>
+</section>
+
+
+
+
+
+<section>
+  <h1>A simple example</h1>
+  <p>Say your project is two HTML files and a CSS stylesheet...</p>
+  <p>Let's make a git repo!</p>
+</section>
+
+
+
+
+<section>
+  <h1>Creating the repo</h1>
+  <pre class="brush:js class-name:l16">
+
+	$ mkdir foo
+	$ cd foo
+	$ git init .
+	$ touch readme page1.html page2.html style.css
+	$ git add .
+	$ git commit -a -m "initial commit"
+
+  </pre>
+</section>
+
+
+
+<section>
+  <h1>Committing</h1>
+  <ul>
+	<li>here's how you commit</li>
+  </ul>
+  <div style="width:820px;padding-top:1em" class="smaller">
+	<div style="width:300px;">
+        <img style="display:block;margin:0.4em auto 0" src="images/workstagerepo.png" alt="git">
+    </div>
+<aside><a href="http://marklodato.github.com/visual-git-guide/index-en.html">Images stolen from...</a></aside>
+</section>
+
+
+
+
+<section>
+  <h1>stuff to add</h1>
+<ul>
+<li>basic commands: git commit, git diff --color, git pull, git push</li>
+</ul>
+</section>
+
+
+
+
+
+</body>
+</html>
