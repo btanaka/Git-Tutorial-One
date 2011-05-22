@@ -36,8 +36,8 @@
   <p>
 	<ul>
 	<li>What is Git?</li>
-	<li>Fundamental concepts</li>
 	<li>Benefits of Git</li>
+	<li>Fundamental concepts</li>
 	<li>A simple, hands-on example</li>
 	<li>Typical daily workflow</li>
 	<li>What next?</li>
@@ -52,9 +52,11 @@
 
 <section>
   <h1>What is Git?</h1>
-	<p>Git is a free & open source, distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</p>
+	<p>&#147;Git is a free & open source, distributed version control system designed to handle everything
+	from small to very large projects with speed and efficiency."</p>
 </section>
 <section>
+  <h1>What is Git? (cont'd.)</h1>
 	<p>
 	A little history...
 	<ul>
@@ -66,6 +68,7 @@
 	</p>
 </section>
 <section>
+  <h1>What is Git? (cont'd.)</h1>
 	<p>Whereas subversion was created to be "A Better CVS",
 	Git is&mdash;to coin a
 	phrase&mdash;<em>magical
@@ -75,29 +78,16 @@
 
 
 
-
-
-<section>
-  <h1>Fundamental Concepts</h1>
-<p>
-<ul>
-	<li>Git is distributed &mdash; No centralized server</li>
-	<li>Changes are committed locally</li>
-	<li>Collaborative code is shared via push & pull</li>
-	<li>Branching and merging is easy and useful</li>
-</ul>
-</p>
-</section>
-
-
-
 <section>
   <h1>Benefits of Git</h1>
 <p>
 <ul>
 	<li>Git makes your life easier</li>
-	<li>Offline commits</li>
-	<li>Cheap branching and merging (So cheap you'll actually use them)</li>
+	<ul>
+		<li>Offline commits</li>
+		<li>Cheap branching and merging (So easy you'll actually use them)</li>
+		<li>More flexible workflows</li>
+	</ul>
 	<li>Superior disk utilization and network performance</li>
 	<li>Much more</li>
 </ul>
@@ -105,19 +95,83 @@
 </section>
 <section>
 	<h1>Real world stats</h1>
-<p>
-One of our company's biggest repositories, SVN vs Git:
-</p>
-<p>
-<ul>
-<li>SVN much bigger on disk (On the order of 200 times bigger!)</li>
-<li>SVN much slower across network</li>
-<li>See email I sent May 19th for details</li>
-</ul>
-</p>
+	<p>
+	One of our company's biggest repositories, SVN vs Git:
+	</p>
+	<p>
+	<ul>
+	<li>SVN much bigger disk hog (On the order of 200 times bigger!)</li>
+	<li>SVN much slower across network</li>
+	<li>See email I sent May 19th for details. (I don't feel like getting fired today.)</li>
+	</ul>
+	</p>
 </section>
 
 
+
+
+<section>
+  <h1>Fundamental Concepts</h1>
+	<p>
+	<ul>
+	<li>Git is distributed &mdash; Each repo is <em>the full repo</em>; a peer of every clone</li>
+	<li>Changes are staged and committed locally</li>
+	<li>Collaborative code is shared via push & pull</li>
+	</ul>
+	</p>
+</section>
+<section>
+  <h1>Fundamental Concepts (cont'd.)</h1>
+	<p>
+	<ul>
+	<li>Branching and merging is easy and useful</li>
+	<li>Revision identifiers are hashes of the full tree, not sequential versions like SVN's.
+	For example, the current revision of this presentation is 8b328d08f212ab855906a56ec921b3a996a5c85c.
+	Fortunately, you can refer to it in commands with a unique substring, eg 8b32.</li>
+	<li>Where you are in the tree is more complicated than in SVN (Out of scope)</li>
+	</ul>
+	</p>
+</section>
+<section>
+  <h1>Fundamental Concepts (cont'd.)</h1>
+	<p>
+	<ul>
+	<li>When you commit, you first stage your changes, then commit to the local repository</li>
+	<li>If you want collaborators to receive your changes, the usual practice is to push your
+	commits to a &#147;rendezvous" repository on a server you can both access</li>
+	<li>To receive collaborators' commits, the usual practice is to pull commits from the &#147;rendezvous" repository</li>
+	</ul>
+	</p>
+</section>
+<section>
+  <h1>Fundamental Concepts (cont'd.)</h1>
+	<p>
+	<ul>
+	<li>Don't be deceived. Many concepts in Git correspond to concepts in SVN, but it's critical to grok the fundamental differences
+	between Git and SVN. Elsewise, trouble ensues.</li>
+	<li>Fortunately, it doesn't take long.</li>
+	</ul>
+	</p>
+</section>
+
+
+<section>
+  <h1>A Quick Word About the Commands</h1>
+  <ul>
+  <li>
+  At first, git commands can look intimidating. &#147;So many commands! My brain is exploding!"
+  </li>
+  <li>
+  Fortunately,
+  Git is a bit like Unix&mdash;Though there's a ton of commands you <em>can</em> use, you'll be able to 
+  be productive with just a small handful to begin.
+  </li>
+  <li>As you'll see, the typical daily workflow requires mastery of very few commands.</li>
+  <li>
+  Don't be afraid. Let's look at a simple example...
+  </li>
+  </ul>
+</section>
 
 
 
