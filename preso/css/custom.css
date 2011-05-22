@@ -21,6 +21,13 @@ body {
   background-attachment: fixed;
 }
 
+.highlightbt {
+  color: #fecd04;
+}
+.unhighlightbt {
+  color: #999;
+}
+
 #footer {
   opacity: 0.5;
   padding: 0 1em;
@@ -117,6 +124,8 @@ section a:hover {
 section h1 {
   font-size: 200%;
   text-align: center;
+/*  color: #fcd017;*/
+  color: #fecd04;
 }
 
 section h2 {
@@ -131,7 +140,7 @@ section h3 {
 
 section p {
   font-size: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 section p.subhead {
@@ -437,3 +446,4 @@ section .commalist br + span:before {
   -moz-transform: scale(5) rotate(120deg);
   -webkit-transform: scale(5) rotate(120deg);
 }
+

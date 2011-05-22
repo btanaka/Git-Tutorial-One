@@ -34,12 +34,12 @@
 
 
 <section>
-  <h1>What We'll Cover</h1>
+  <h1>What We'll Cover Today</h1>
   <p>
 	<ul>
 	<li>What is Git?</li>
-	<li>Benefits of Git</li>
-	<li>Fundamental concepts</li>
+	<li>Benefits</li>
+	<li>Key concepts</li>
 	<li>A simple, hands-on example</li>
 	<li>Typical daily workflow</li>
 	<li>What next?</li>
@@ -56,6 +56,7 @@
   <h1>What is Git?</h1>
 	<p>&#147;Git is a free & open source, distributed version control system designed to handle everything
 	from small to very large projects with speed and efficiency."</p>
+	<aside>http://git-scm.com/</aside>
 </section>
 <section>
   <h1>What is Git? (cont'd.)</h1>
@@ -70,7 +71,7 @@
 </section>
 <section>
   <h1>What is Git? (cont'd.)</h1>
-	<p>Whereas subversion was created to be "A Better CVS",
+	<p>Whereas Subversion was created to be "A Better CVS",
 	Git is&mdash;to coin a
 	phrase&mdash;<em>magical
 	and revolutionary.</em></p>
@@ -97,13 +98,13 @@
 <section>
 	<h1>Real world stats</h1>
 	<p>
-	A big repository, SVN vs Git:
+	A very large (lots of code, long history) repository, real-world SVN vs Git metrics:
 	</p>
 	<p>
 	<ul>
 	<li>SVN much bigger disk hog (On the order of 200 times bigger!)</li>
 	<li>SVN much slower across network</li>
-	<li>See email I sent May 19th for details.</li>
+	<li>Sorry to be vague. See my May 19th email for details.</li>
 	</ul>
 	</p>
 </section>
@@ -112,43 +113,44 @@
 
 
 <section>
-  <h1>Fundamental Concepts</h1>
+  <h1>Key Concepts</h1>
 	<p>
 	<ul>
 	<li>Git is distributed &mdash; Each repo is <em>the full repo</em>; a peer of every clone</li>
-	<li>Changes are staged and committed locally</li>
+	<li>Changes are committed <em>locally</em> <span class="unhighlightbt">(versus committing to a central server, a la Subversion)</span></li>
 	<li>Collaborative code is shared via push & pull</li>
 	</ul>
 	</p>
 </section>
 <section>
-  <h1>Fundamental Concepts (cont'd.)</h1>
+  <h1>Key Concepts (cont'd.)</h1>
 	<p>
 	<ul>
 	<li>Branching and merging is easy and useful</li>
 	<li>Revision identifiers are hashes of the full tree, not sequential versions like SVN's.
-	For example, the current revision of this presentation is 8b328d08f212ab855906a56ec921b3a996a5c85c.
-	Fortunately, you can refer to it in commands with a unique substring, eg 8b32.</li>
+	<span class="unhighlightbt">For example, the current revision of this presentation is 8b328d08f212ab855906a56ec921b3a996a5c85c.
+	Fortunately, you can refer to it in commands with a unique substring, eg 8b32.</span></li>
 	<li>Where you are in the tree is more complicated than in SVN (Out of scope)</li>
 	</ul>
 	</p>
 </section>
 <section>
-  <h1>Fundamental Concepts (cont'd.)</h1>
+  <h1>Key Concepts (cont'd.)</h1>
 	<p>
 	<ul>
-	<li>When you commit, you first stage your changes, then commit to the local repository</li>
-	<li>If you want collaborators to receive your changes, the usual practice is to push your
+	<li>Changes are <em>staged</em> then committed</li>
+	<li>If you want collaborators to receive your changes, push your
 	commits to a &#147;rendezvous" repository on a server you can both access</li>
-	<li>To receive collaborators' commits, the usual practice is to pull commits from the &#147;rendezvous" repository</li>
+	<li>To receive collaborators' commits, pull commits from the &#147;rendezvous" repository</li>
 	</ul>
 	</p>
+	<aside>[1] There are other ways to collaborate (eg. via patches, pulling and pushing directly between peers, etc) but the rendezvous server method is the usual practice.</aside>
 </section>
 <section>
-  <h1>Fundamental Concepts (cont'd.)</h1>
+  <h1>Key Concepts (cont'd.)</h1>
 	<p>
 	<ul>
-	<li>Don't be deceived. Many concepts in Git correspond to concepts in SVN, but it's critical to grok the fundamental differences
+	<li>Don't be lulled into a false sense of confidence. Many concepts in Git correspond to concepts in SVN, but it's critical to grok the fundamental differences
 	between Git and SVN. Elsewise, trouble ensues.</li>
 	<li>Fortunately, it doesn't take long.</li>
 	</ul>
@@ -178,7 +180,7 @@
 
 <section>
   <h1>A simple example</h1>
-  <p>Say your project is comprised of two HTML files and a CSS stylesheet...</p>
+  <p>Say your project is comprised of two HTML files and a CSS stylesheet.</p>
   <p>Let's make a git repo!</p>
 </section>
 
@@ -187,20 +189,36 @@
 
 <section>
   <h1>Creating the repo</h1>
+  <p>It's easy!</p>
+  <p>First, let's create a directory and some files. (This isn't git stuff yet.)</p>
   <pre class="brush:js class-name:l16">
-
-	$ mkdir foo
-	$ cd foo
-	$ git init .
-	$ touch readme page1.html page2.html style.css
-	$ git add .
-	$ git commit -a -m "initial commit"
-
+	$ mkdir foo // create a new directory for the project
+	$ cd foo // navigate to that directory
+	$ touch readme page1.html page2.html style.css // create the files
   </pre>
 </section>
+<section>
+  <h1>Creating the repo (cont'd.)</h1>
+  <p>Now let's create the git repository and commit. Three easy steps:</p>
+<pre class="brush:js class-name:l16">
+	$ git init . // initialize a new Git repository
+	$ git add . // add the current directory and its contents to the git staging area
+	$ git commit -a -m "initial commit" // commit!
+</pre>
+	<p>That's it!</p>
+	<p>You've created a new Git repository and performed your first commit.</p>
+</section>
 
+<section>
+	<h1>Creating the repo (cont'd.)</h1>
+	<h2>A little tip</h2>
+	<p>Creating a new Git repo is <em>trivially easy</em>.
+	Because it's so easy (just a few seconds of effort) you can experiment with Git commands in ways you cannot with SVN.
+	Want to know what effect a git amend will have on your squashed merge but don't want to find out the hard way in your real repo? Spin up
+		a new repo and try it out.</p>
+</section>
 
-
+	
 <section>
   <h1>Committing</h1>
   <ul>
