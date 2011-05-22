@@ -45,9 +45,6 @@
 	<li>What next?</li>
 	</ul>
 <p>
-<!--  <aside>
-    <a href="http://api.jquery.com/jQuery/"><code>jQuery()</code> function</a>
-  </aside> -->
 </section>
 
 
@@ -80,6 +77,7 @@
 
 
 
+
 <section>
   <h1>Benefits of Git</h1>
 <ul>
@@ -92,10 +90,17 @@
 	<li>Data redundancy and replication.
 		<span class="unhighlightbt">Since there are multiple full repos on multiple machines (instead of one central repo), the risk of project loss is lower.</span></li>
 	<li>High availability. <span class="unhighlightbt">Server down? Network down? No problem. Work in your repo (commit, view history, branch etc) to your heart's content. Try that with Subversion!</span></li>
-	<li>Superior disk utilization and network performance</li>
-	<li>Much more</li>
 </ul>
 </p>
+</section>
+<section>
+	 <h1>Benefits of Git (cont'd.)</h1>
+	<ul>
+	<li>Only one .git directory <em>per repository</em>. (Versus a .svn in every subfolder)</li>
+	<li>Superior disk utilization and network performance</li>
+	<li>Properties such as ignores are <em>much easier to manage</em></li>
+	<li>Much more</li>
+	</ul>
 </section>
 <section>
 	<h1>Real world stats</h1>
@@ -140,6 +145,7 @@
 	<p>
 	<ul>
 	<li>Changes are <em>staged</em> then committed</li>
+	<li>Git tracks content, not metadata. It tracks changes in the tree, not files or directories. (Sub-file tracking.)</li>
 	<li>If you want collaborators to receive your changes, push your
 	commits to a &#147;rendezvous" repository on a server you can both access</li>
 	<li>To receive collaborators' commits, pull commits from the &#147;rendezvous" repository</li>
@@ -181,8 +187,8 @@
 
 <section>
   <h1>A simple example</h1>
-  <p>Say your project is comprised of two HTML files and a CSS stylesheet.</p>
-  <p>Let's make a git repo!</p>
+  <p>Say your project is comprised of an HTML file with some CSS.</p>
+  <p>Let's make a git repo.</p>
 </section>
 
 
@@ -195,7 +201,7 @@
   <pre class="brush:js class-name:l16">
 	$ mkdir foo // create a new directory for the project
 	$ cd foo // navigate to that directory
-	$ touch readme page1.html page2.html style.css // create the files
+	$ touch README page1.html  // create the files
   </pre>
 </section>
 <section>
@@ -214,24 +220,119 @@
 	<h1>Creating the repo (cont'd.)</h1>
 	<h2>A little tip</h2>
 	<p>Creating a new Git repo is <em>trivially easy</em>.
-	Because it's so easy (just a few seconds of effort) you can experiment with Git commands in ways you cannot with SVN.
+	Because it's so easy (just a few seconds of effort) you can freely experiment.
 	Want to know what effect a git amend will have on your squashed merge but don't want to find out the hard way in your real repo? Spin up
 		a new repo and try it out.</p>
 </section>
 
-	
+
 <section>
-  <h1>Committing</h1>
-  <ul>
-	<li>here's how you commit</li>
-  </ul>
-  <div style="width:820px;padding-top:1em" class="smaller">
-	<div style="width:300px;">
-        <img style="display:block;margin:0.4em auto 0" src="images/workstagerepo.png" alt="git">
-    </div>
-<aside><a href="http://marklodato.github.com/visual-git-guide/index-en.html">Images stolen from...</a></aside>
+	<h1>Making a few changes</h1>
+	<p>Add some basic content to the file. (Hope you have snippets!)</p>
+	<pre class="brush:js class-name:l16">
+		&lt;html&gt;                
+		&lt;head&gt;                
+		        &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+
+		        &lt;title&gt;Page1&lt;/title&gt;
+		        &lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;
+		                body {
+		                        background: red;
+		                }   
+		        &lt;/style&gt;   
+		&lt;/head&gt;               
+		&lt;body&gt;                
+		        i am master                                                       
+		&lt;/body&gt;               
+		&lt;/html&gt;
+  </pre>
+	<p>Save your changes, load the page in Safari, and behold the redness.</p>
 </section>
 
+<section>
+	<h1>Making a few changes (cont'd.)</h1>
+	<p>See your changes:</p>
+	<pre class="brush:js class-name:l16">
+		$ git status // like svn status
+		$ git diff --color // totally cooler than svn diff
+</pre>
+	<p>Commit these new changes:</p>
+		<pre class="brush:js class-name:l16">
+			$ git commit -a // -a adds the changes to staging. And yes, you can git commit -a -m "message"
+</pre>
+	<p>View history:</p>
+		<pre class="brush:js class-name:l16">
+			$ git log // gui example: gitk
+</pre>
+<p>You mentioned staging. What's that?</p>
+</section>
+
+	
+<section>
+  <h1>Staging</h1>
+  <ul>
+	<li>Files are added to the staging area and then committed.</li>
+	<li>You can add multiple changes in multiple files to staging before committing.</li>
+	<li>(Actually, git doesn't care about your so-called files, puny human. The tree is all!)</li>
+  </ul>
+  <div style="width:513px;padding-top:1em" class="smaller">
+	<div style="width:300px;">
+        <img style="display:block;margin:0.4em auto 0" src="images/wd_stage_history.png" alt="git">
+    </div>
+</section>
+
+
+<section>
+	<h1>Make a few more changes</h1>
+	<p>Let's make a change to the css so we can see a simple change.</p>
+	<p>Add the following two lines (or similar) to the style and change the background color to blue:</p>
+<pre class="brush:js class-name:l16">
+	background: blue;
+	color: #fff;
+	font-size: 500%;
+</pre>
+	<p>Save, then reload in Safari and behold the change.</p>
+	<p>Inspect with your shiny new git commands, and then commit:</p>
+	<pre class="brush:js class-name:l16">
+	$ git diff --color // NOTE: the old background line is red, and the new one is green
+	$ git commit -a
+	$ git log
+</pre>
+</section>
+
+
+
+
+
+<section>
+	<h1>Branching</h1>
+	<h2>Why branch at all?</h2>
+	<ul>
+			<li>Scenario: Working in an experimental branch. Ah... freedom!</li>
+			<ul>
+				<li>Like it? Merge it</li>
+				<li>Hate it? Delete branch</li>
+			</ul>
+			<li>Scenario: The "inconvenient bug" scenario</li>
+			<ol>
+				<li>You're happily working in a branch when a P1 bug occurs in master</li>
+				<li>In an instant, you switch to master, and fix the bug</li>
+				<li>Switch back to your branch, and you're right where you left off</li>
+			</ol>
+		</ul>
+</section>
+<section>
+	<h1>Branching (cont'd.)</h1>
+	<h2>&#147;Branches are cheap and easy? Prove it"</h2>
+	<p></p>
+</section>
+
+
+
+
+
+
+<!-- ----------------- -->
 
 <section>
 <h1>Clone this presentation</h1>
