@@ -17,6 +17,12 @@
 
 <!-- i borrowed this presentation rig from https://github.com/cowboy after seeing it in action at jQuery conf 2011 -->
 
+
+
+
+
+
+
 <section>
   <h1>An Introduction to Git</h1>
   <div style="width:820px;padding-top:1em" class="smaller">
@@ -49,6 +55,9 @@
 
 
 
+
+
+
 <section>
   <h1>What is Git?</h1>
 	<p>&#147;Git is a free & open source, distributed version control system designed to handle everything
@@ -74,6 +83,10 @@
 	and revolutionary.</em></p>
 	</p>
 </section>
+
+
+
+
 
 
 
@@ -114,6 +127,8 @@
 	<li>Sorry to be vague. See my May 19th email for details.</li>
 	</ul>
 </section>
+
+
 
 
 
@@ -164,7 +179,6 @@
 	</p>
 </section>
 
-
 <section>
   <h1>A Quick Word About the Commands</h1>
   <ul>
@@ -185,14 +199,15 @@
 
 
 
+
+
+
+
 <section>
   <h1>A simple example</h1>
   <p>Say your project is comprised of an HTML file with some CSS.</p>
   <p>Let's make a git repo.</p>
 </section>
-
-
-
 
 <section>
   <h1>Creating the repo</h1>
@@ -304,6 +319,8 @@
 
 
 
+
+
 <section>
 	<h1>Branching</h1>
 	<h2>Why branch at all?</h2>
@@ -323,8 +340,123 @@
 </section>
 <section>
 	<h1>Branching (cont'd.)</h1>
-	<h2>&#147;Branches are cheap and easy? Prove it"</h2>
+	<h2>&#147;Branches are cheap and easy? Prove it."</h2>
 	<p></p>
+</section>
+<section>
+	<h1>Branching (cont'd.)</h1>
+	<p>The goal: Create a new branch, and watch it do its magic.</p>
+	<pre class="brush:js class-name:l16">
+		$ git branch // shows all your branches
+		$ git branch experiment // creates a new branch called experiment
+		$ git branch // look! we're still on master. see the star?
+		$ git checkout experiment
+		$ git branch // ah. now we're rocking the experiment branch
+</pre>
+<p>In real life, you'll do this in one command:</p>
+<pre class="brush:js class-name:l16">
+		$ git checkout -b foo // create branch foo and switch to it
+</pre>
+</section>
+<section>
+	<h1>Branching (cont'd.)</h1>
+	<ul>
+		<li>In SVN, branches are subdirectories of someProject/branches/</li>
+		<li>In Git, checking out a branch magically transmogrifies your working tree</li>
+		<li>You have one working tree, and it changes state depending on the branch you have checked out</li>
+	</ul>
+</section>
+<section>
+	<h1>Branching (cont'd.)</h1>
+	<p>Let's take some of that magic transmogrification for a spin</p>
+	<ol>
+	<li>Check out experiment (git checkout experiment)</li>
+	<li>Edit the CSS so the background color is green</li>
+	<li>Change "i am master" to "i am experiment"</li>
+	<li>Save and git commit your change</li>
+	<li>Reload Safari. Mmm... green...</li>
+	<li>Now, check out master (git checkout master)</li>
+	<li>Reload Safari. Whoa! Blue!</li>	
+	<li>Rinse. Repeat.</li>
+	<li>Note: vim, TextMate, Netbeans, and Xcode are all transmogrification-compliant</li>
+	</ol>
+</section>
+<section>
+	<h1>Branching (cont'd.)</h1>
+	<h2>Use your stash</h2>
+	<ul>
+	<li>When you check out master, if you have un-committed changes in your current branch, git will merge that branch
+		onto master. Don't learn this the hard way, like I did.</li>
+	<li>git stash is your friend.</li>
+	<li>git stash is especially your friend in the "inconvenient bug scenario." (Stash, checkout, hack, checkout, stash apply.)</li>
+	</ul>
+</section>
+<section>
+	<h1>Merging</h1>
+	<p>To keep things simple, let's do a very simple merge with no conflicts.</p>
+	<pre class="brush:js class-name:l16">
+		$ git checkout master
+		$ git checkout -b mergetest
+		// Edit page1.html. Add a new line that won't cause a merge conflict. eg:
+		&lt;body&gt;                       
+		        i am master          
+		        this is a new line                                                                                                             
+		&lt;/body&gt;
+		$ git commit -a
+</pre>
+	<p>Now we're ready to merge</p>
+<pre class="brush:js class-name:l16">
+		$ git checkout master
+		$ git merge mergetest // compare and contrast with http://svnbook.red-bean.com/en/1.5/svn.branchmerge.basicmerging.html
+</pre>
+</section>
+<section>
+	<h1>Merging (cont'd.)</h1>
+	<h2>But what if there <em>is</em> a conflict?</h2>
+	<p>You will receive a message like this:</p>
+	<pre class="brush:js class-name:l16">
+		$ git merge experiment 
+		Auto-merging page1.html
+		CONFLICT (content): Merge conflict in page1.html
+		Automatic merge failed; fix conflicts and then commit the result.
+</pre>
+	<p>Git's good, but it can't read your mind. Resolve the conflict manually and commit.</p>
+	<pre class="brush:js class-name:l16">
+		&lt;/head&gt;
+		&lt;body&gt;
+		&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+			i am master
+			this is a new line
+		=======
+			i am experiment. isn&#x27;t that a delight?
+		&gt;&gt;&gt;&gt;&gt;&gt;&gt; experiment
+		&lt;/body&gt;
+		&lt;/html&gt;
+</pre>
+</section>
+
+
+
+
+
+
+
+<section>
+	<h1>Typical Daily Workflow</h1>
+	<p>My typical git day looks like this:</p>
+	  <pre class="brush:js class-name:l16">
+		<li>git pull</li>
+		<li>Hack hack hack</li>
+		<li>git commit -a -m "added new cool feature"</li>
+		<li>Hack hack hack</li>
+		<li>git commit -a -m "fixed annoying bug"</li>
+		<li>git pull</li>
+		<li>Resolve any conflicts with my co-workers' commits</li>
+		git push</li>
+</pre>
+	</ol>
+	<p>The 2-5 cycle will repeat N times, with perhaps a pull/push or two along the way.</p>
+	<p>Also: Because branches are cheap, I'm frequently working in a branch.</p>
 </section>
 
 
